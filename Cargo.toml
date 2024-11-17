@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-ears = { path = "/home/joey/Documents/programming/rust/libraries/ears" }
-inline_colorization = { path = "/home/joey/Documents/programming/rust/libraries/inline_colorization" }
+ears = { git = "https://github.com/d4140n-4h3-1/ears.git" }
+inline_colorization = { git = "https://github.com/d4140n-4h3-1/inline_colorization.git" }
 rand = "0.8.5"
