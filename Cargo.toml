@@ -1,0 +1,9 @@
+[package]
+name = "dialogue_test"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ears = { path = "/home/joey/Documents/programming/rust/libraries/ears" }
+inline_colorization = { path = "/home/joey/Documents/programming/rust/libraries/inline_colorization" }
+rand = "0.8.5"
