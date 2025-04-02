@@ -17,10 +17,6 @@ fn main() {
 	troll();	
 }
 
-fn delay() { // For sound files. 
-	sleep(Duration::from_secs(4));
-}
-
 // Sound effects that may be reused. Used as separate functions for now. 
 
 fn neckpop() {
@@ -139,7 +135,7 @@ fn troll() {
 							println!("{style_bold}Troll:{style_reset} I guess it's better than nothing. ");
 								let mut troll_line_4p2 = Sound::new("examples/troll_data/troll-line_4.2.flac").unwrap();
 								troll_line_4p2.play();
-								sleep(Duration::from_secs(1));
+								sleep(Duration::from_secs(5));
 							println!();
 						//	troll_barter();
 						}
@@ -147,19 +143,27 @@ fn troll() {
 						"c" | "C" => {
 							println!("{style_bold}Player:{style_reset} Is this amount okay? ");
 							match persuasion { // This block may evolve into an "if" statement when further enhanced. 
+									   // We'll need to input an x amount of coins provided the player has them 
+									   // within range.  
 								1 => {
-									println!("{style_bold}Troll [FAILED]{style_reset}: What do you take me for? A beggar? ");
+									println!("{style_bold}Troll:[FAILED]{style_reset} What do you take me for? A beggar? ");
 										let mut troll_line_4p3a = Sound::new("examples/troll_data/troll-line_4.3a.flac").unwrap();
 										troll_line_4p3a.play();
-										delay();
+										sleep(Duration::from_secs(3));
 								},
 
 								2 => {
-									println!("{style_bold}Troll [SUCCESS]{style_reset}: I guess it's better than nothing. ");
+									println!("{style_bold}Troll:[SUCCESS]{style_reset} I guess it's better than nothing. ");
 										let mut troll_line_4p3b = Sound::new("examples/troll_data/troll-line_4.2.flac").unwrap();
 										troll_line_4p3b.play();
 										sleep(Duration::from_secs(1));
 								},
+
+								3 => {
+									println!("{style_bold}Troll:{style_reset} You ain't got that much. ");
+								//	troll_line_4p3c.play(); // There is no sound yet
+								//	sleep(Duration::from_secs(1));
+								}
 								_ => println!(),
 							}
 							println!();
@@ -193,7 +197,7 @@ fn troll() {
 					println!("{style_bold}Troll:{style_reset} Probably because you are wasting my oxygen. ");
 						let mut troll_line_3p1p2 = Sound::new("examples/troll_data/troll-line_3.1.2.flac").unwrap();
 						troll_line_3p1p2.play();
-						sleep(Duration::from_secs(1));
+						sleep(Duration::from_secs(3));
 					println!();
 
 				}
@@ -203,7 +207,7 @@ fn troll() {
 					println!("{style_bold}Troll:{style_reset} Yeah. Beat it. ");
 						let mut troll_line_3p1p3 = Sound::new("examples/troll_data/troll-line_3.1.3.flac").unwrap();
 						troll_line_3p1p3.play();
-						sleep(Duration::from_secs(1));
+						sleep(Duration::from_secs(2));
 					println!();
 				}
 				_ => println!(),
@@ -239,6 +243,7 @@ fn troll() {
 				"c" | "C" | "n" | "N" => {
 					println!("{style_bold}Player:{style_reset} No. I sense I made a mistake. ");
 					println!("{style_bold}Troll:{style_reset} Yeah, that's what I thought. ");
+						// Sound here
 					println!();
 				}
 				_ => println!(),
@@ -263,6 +268,7 @@ fn troll() {
 				"a" | "A" => {
 					println!("{style_bold}Player:{style_reset} *{style_italics}stare{style_reset}*");
 					println!("{style_bold}Troll:{style_reset} You are starting to make me mad...");
+						// Sound here
 					println!();
 				}
 				"b" | "B" => {

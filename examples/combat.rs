@@ -117,6 +117,7 @@ fn main() {
 			println!("   This rare stone grants you full health. Use this as your last "); 
 			println!("   resort, because it only recharges once every three battles. ");
 			println!("   from the first use. "); 
+			println!("   ");
 			println!("B) PATCH");
 			println!("   You are carrying five bandages. Restores 20 points per use. ");
 			println!("   ");

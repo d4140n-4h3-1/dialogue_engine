@@ -1,9 +1,9 @@
 [package]
-name = "dialogue_test"
-version = "0.1.0"
+name = "dialogue_engine"
+version = "0.2.0"
 edition = "2021"
 
 [dependencies]
-ears = { git = "https://github.com/d4140n-4h3-1/ears.git" }
-inline_colorization = { git = "https://github.com/d4140n-4h3-1/inline_colorization.git" }
+ears = { path = "/home/joey/Documents/programming/rust/libraries/ears" }
+inline_colorization = { path = "/home/joey/Documents/programming/rust/libraries/inline_colorization" }
 rand = "0.8.5"

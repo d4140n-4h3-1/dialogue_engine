@@ -1,0 +1,145 @@
+use std::{
+	io::stdin
+//	thread,			// Use "thread" and "Duration" for NPCs talking to each other. 
+//	time::Duration
+};
+/*
+use ears::{ 			// If you wish to utilize voices or sound effects, disable "thread" and "Duration" via "//". 
+	AudioController,	// They will not be necessary as Ears will automatically set a countdown based on an audio file's length. 
+	Music,
+	Sound,
+}; 				// Erase "/*" and "*/" to enable a sections of code. 
+*/
+use inline_colorization::*; // I originally modified this crate for my own convenience. There's nothing too signifant. 
+use rand::Rng;
+
+fn main() {
+	npc_template();
+//	test();
+}
+
+// I am working on persuasion in "npc_template". It's labeled as a coin_flip, and for now I am using the "rand" crate. 
+fn npc_template() {
+	// Could have used "if" statements, but "match" expressions take up a little less code. 
+	// It's pretty much the same effect until you get more advanced. 
+
+	let mut player_answer = (
+		String::new(), // player_answer.0, 0 is equal to 1 in this context. 
+		String::new(), // player_answer.1
+		String::new(), // player_answer.2
+		// Repeat "String::new()," as many times as needed. 
+	);
+
+	println!("A) Choice 1");
+	println!("B) Choice 2");
+	println!("C) Choice 3");
+	println!(); // It's wise to create an empty line between blocks. Better readability in the command line. 
+	stdin().read_line(&mut player_answer.0).ok();
+	match &player_answer.0[..1] {
+		// every match expression depends on "stdin()" to make selections. 
+		"a" | "A" => {
+			println!("You chose A. Pick another? ");
+			println!();
+
+			println!("A) Choice 4");
+			println!("B) Choice 5");
+			println!("C) Choice 6");
+			println!("D) Choice 7");
+			println!();
+
+			stdin().read_line(&mut player_answer.1).ok(); 
+			match &player_answer.1[..1] {
+				"a" | "A" 	=> println!("Alpha"), // Replace ";" with "," as single lines do not need to be placed in additional curly brackets. 
+				"b" | "B" 	=> println!("Bravo"), // Should you require multiple lines, surround them with "{}" after "=>", then use ";" again. 
+				"c" | "C" 	=> println!("Charlie"),
+				"d" | "D" 	=> println!("Delta"),
+				_ 		=> println!("error"),
+			} 
+		}
+		"b" | "B" => {
+			println!("You chose B. Pick another? ");
+			println!();
+
+			println!("E) Choice 4");
+			println!("F) Choice 5");
+			println!("G) Choice 6");
+			println!("H) Choice 7");
+			println!();
+
+			stdin().read_line(&mut player_answer.1).ok();
+			match &player_answer.1[..1] {
+				"e" | "E" 	=> println!("Echo"),
+				"f" | "F"	=> println!("Foxtrot"),
+				"g" | "G"	=> println!("Gulf"),
+				"h" | "H"	=> println!("Hotel"),
+				_ 		=> println!("error"),
+			}
+		}
+		"c" | "C" => {
+			println!("You chose C. Pick another? ");
+			println!();
+
+			println!("I) Choice 4");
+			println!("J) Choice 5");
+			println!("K) Choice 6");
+			println!("L) Choice 7"); // Coin flip referred here
+			println!();
+
+			stdin().read_line(&mut player_answer.1).ok();
+			match &player_answer.1[..1] {
+				"i" | "I" => println!("India"),
+				"j" | "J" => {
+					println!("Juliet");
+					// Should I write a card game? 
+				}
+				"k" | "K" => { 
+					println!("Kilo: DICE!");
+					let dice = (
+						rand::thread_rng().gen_range(1..=6), // dice.0
+						rand::thread_rng().gen_range(1..=6), // dice.1
+					);
+
+					match dice.0 {
+						1 => "one", 	2 => "two", 
+						3 => "three", 	4 => "four",
+						5 => "five", 	6 => "six",
+
+						_ => "error"
+						// We could match each integer as 'println!("First DIE: one"),', 
+						// but that's just adding unnecessary code. Try to minimize 
+						// writing as much as applicable. 
+					};
+					println!("FIRST DIE: {}", dice.0); 
+
+					match dice.1 {
+						1 => "one", 	2 => "two",
+						3 => "three", 	4 => "four",
+						5 => "five", 	6 => "six",
+
+						_ => "error" // Remember, "_ =>" is mandatory. 
+					};
+					println!("SECOND DIE: {}", dice.1);
+
+//					let dice.0 + dice.1 = total; 
+//					println!("Total: {}", total);
+
+					// This line works identically as the last two, but less code. 
+					// We want less wherever possible. 
+					println!("Total: {}", dice.0 + dice.1);
+				}
+				"l" | "L" => {
+					println!("Lima: COIN FLIP!");
+				//	use Rand ranging from 1 through 2
+					let coin_flip = rand::thread_rng().gen_range(1..=2); // needs to be replaced by a skill tree. 
+					match coin_flip {
+						1 => { println!("Heads"); }
+						2 => { println!("Tails"); }
+						_ => println!("error"),
+					}
+				}
+				_		=> println!("error"),
+			}
+		}
+		_ => println!("error"),
+	}
+}
